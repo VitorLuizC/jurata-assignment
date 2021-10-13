@@ -7,7 +7,7 @@ async function fetchAnswer(question: string): Promise<Answer> {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
-      'Authorization': `Bearer ${process.env.M3O_API_KEY!}`,
+      'Authorization': `Bearer ${process.env.MICRO_API_KEY}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
