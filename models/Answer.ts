@@ -4,10 +4,10 @@ type Answer = {
   answer: string;
 
   /** Any related image. */
-  image: string;
+  image?: string;
 
   /** A related URL. */
-  url: string;
+  url?: string;
 };
 
 export default Answer;

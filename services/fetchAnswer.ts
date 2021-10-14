@@ -11,7 +11,7 @@ async function fetchAnswer(question: string): Promise<Answer> {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      question,
+      query: question,
     }),
   });
 

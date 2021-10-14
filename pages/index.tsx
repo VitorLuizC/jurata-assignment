@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react';
 import type Answer from '../models/Answer';
 import fetchAnswer from '../services/fetchAnswer';
 
@@ -15,8 +15,15 @@ function Index() {
     event.stopPropagation();
 
     try {
-      const answer = await fetchAnswer(question);
-      setAnswer(answer);
+      const response = await fetch('/api/answer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ question }),
+      });
+
+      setAnswer(await response.json());
     } catch (error) {
       console.error(error);
     }
@@ -32,11 +39,13 @@ function Index() {
 
       {answer && (
         <div>
-          <img src={answer.image} alt="" />
+          {answer.image && <img src={answer.image} alt="" />}
           <p>{answer.answer}</p>
-          <a href={answer.url} target="_blank" rel="noopener noreferrer">
-            See more
-          </a>
+          {answer.url && (
+            <a href={answer.url} target="_blank" rel="noopener noreferrer">
+              See more
+            </a>
+          )}
         </div>
       )}
     </form>
