@@ -1,6 +1,7 @@
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
 import styled from 'styled-components';
 import Header from '../components/Header';
+import Logo from '../components/Logo';
 import GlobalStyle from '../theme/BaseStyles';
 import LayerLevel from '../theme/LayerLevel';
 import theme from '../theme/theme';
@@ -35,7 +36,9 @@ function MyApp(props: AppProps) {
     <Container>
       <GlobalStyle />
       <Stripe />
-      <Header />
+      <Header>
+        <Logo />
+      </Header>
       <Content>
         <Component {...pageProps} />
       </Content>
@@ -43,4 +46,4 @@ function MyApp(props: AppProps) {
   );
 }
 
-export default MyApp
+export default MyApp;

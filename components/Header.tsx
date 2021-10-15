@@ -3,8 +3,19 @@ import styled from 'styled-components';
 
 const Wrapper = styled.header`
   box-sizing: border-box;
-  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 75px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   border-bottom: 1px solid #d8d8d8;
+`;
+
+const Content = styled.div`
+  max-width: 1180px;
+  width: 100%;
+  height: 100%;
 `;
 
 type Props = {
@@ -17,7 +28,7 @@ function Header(props: Props): ReactElement {
 
   return (
     <Wrapper className={className}>
-      {children}
+      <Content>{children}</Content>
     </Wrapper>
   );
 }
