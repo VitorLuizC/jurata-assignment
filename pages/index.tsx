@@ -1,14 +1,11 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { FormEvent, useState } from 'react';
+import AnswerCard from '../components/AnswerCard';
+import QuestionInput from '../components/QuestionInput';
 import type Answer from '../models/Answer';
-import fetchAnswer from '../services/fetchAnswer';
 
 function Index() {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState<null | Answer>(null);
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    setQuestion(event.target.value);
-  };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
@@ -31,23 +28,9 @@ function Index() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={question}
-        onChange={handleChange}
-      />
+      <QuestionInput value={question} onChange={setQuestion} />
 
-      {answer && (
-        <div>
-          {answer.image && <img src={answer.image} alt="" />}
-          <p>{answer.answer}</p>
-          {answer.url && (
-            <a href={answer.url} target="_blank" rel="noopener noreferrer">
-              See more
-            </a>
-          )}
-        </div>
-      )}
+      {answer && <AnswerCard answer={answer} question={question} />}
     </form>
   );
 }
