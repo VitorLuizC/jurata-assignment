@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
 import styled from 'styled-components';
 import Header from '../components/Header';
+import GlobalStyle from '../theme/BaseStyles';
 import LayerLevel from '../theme/LayerLevel';
 import theme from '../theme/theme';
 
@@ -32,6 +33,7 @@ function MyApp(props: AppProps) {
 
   return (
     <Container>
+      <GlobalStyle />
       <Stripe />
       <Header />
       <Content>

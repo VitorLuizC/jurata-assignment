@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 import type Answer from '../models/Answer';
-import theme from '../theme/theme';
-import Anchor from './Anchor';
-import Card from './Card';
+import Button from './Button';
+import Card from './card/Card';
+import CardFooter from './card/CardFooter';
+import IconLink from './icons/IconLink';
 
 const Wrapper = styled(Card)`
   width: 290px;
+`;
+
+const Footer = styled(CardFooter)`
+  justify-content: flex-end;
 `;
 
 const ImageWrapper = styled.figure`
@@ -44,9 +49,11 @@ function AnswerCard(props: Props) {
       <Title>{question}</Title>
       <Text>{answer.answer}</Text>
       {answer.url && (
-        <Anchor to={answer.url}>
-          See more
-        </Anchor>
+        <Footer>
+          <Button icon={<IconLink />} href={answer.url}>
+            See more
+          </Button>
+        </Footer>
       )}
     </Wrapper>
   );

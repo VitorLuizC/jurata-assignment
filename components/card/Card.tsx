@@ -1,8 +1,8 @@
 import type { ReactElement, ReactNode } from 'react';
 import styled from 'styled-components';
-import theme from '../theme/theme';
+import theme from '../../theme/theme';
 
-const Wrapper = styled.div`
+const Wrapper = styled.footer`
   background-color: ${theme.color.white};
   box-shadow: rgb(0 0 0 / 17%) 0 0 13px 5px;
 `;
