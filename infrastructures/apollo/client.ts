@@ -13,7 +13,8 @@ const typeDefs = gql`
   }
 
   type Query {
-    ask(question: String!): Answer!
+    answer(question: String!): Answer!
+    answers: [Answer!]!
   }
 `;
 

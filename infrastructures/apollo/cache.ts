@@ -18,7 +18,7 @@ const cache = new InMemoryCache({
     },
     Query: {
       fields: {
-        ask: readAsync(async (_, options) => {
+        answer: readAsync(async (_, options) => {
           const question = options.args?.question ?? '';
 
           const response = await fetch('/api/answer', {
