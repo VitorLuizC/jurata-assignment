@@ -5,14 +5,13 @@ import type URL from './URL';
  * @see {@link https://m3o.com/answer/api} for more information.
  */
 type Answer = {
-  /** The answer to your question. */
-  answer: string;
+  /** A related URL. */
+  url: null | URL;
 
   /** Any related image. */
-  image?: URL;
-
-  /** A related URL. */
-  url?: URL;
+  image: null | URL;
+  answer: string;
+  question: string;
 };
 
 export default Answer;
