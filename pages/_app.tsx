@@ -1,7 +1,9 @@
+import { ApolloProvider } from '@apollo/client';
 import type { AppProps } from 'next/app';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Logo from '../components/Logo';
+import client from '../infrastructures/apollo/client';
 import GlobalStyle from '../theme/BaseStyles';
 import LayerLevel from '../theme/LayerLevel';
 import theme from '../theme/theme';
@@ -27,22 +29,25 @@ const Content = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 2rem;
 `;
 
 function MyApp(props: AppProps) {
   const { Component, pageProps } = props;
 
   return (
-    <Container>
-      <GlobalStyle />
-      <Stripe />
-      <Header>
-        <Logo />
-      </Header>
-      <Content>
-        <Component {...pageProps} />
-      </Content>
-    </Container>
+    <ApolloProvider client={client}>
+      <Container>
+        <GlobalStyle />
+        <Stripe />
+        <Header>
+          <Logo />
+        </Header>
+        <Content>
+          <Component {...pageProps} />
+        </Content>
+      </Container>
+    </ApolloProvider>
   );
 }
 
